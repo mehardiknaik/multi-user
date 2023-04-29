@@ -25,13 +25,10 @@ inquirer
     const selectedClient = clients.find(
       (client) => client.name === answers.client
     );
-
     // Set the environment variables for the selected client
-    console.log(process.env)
     for (let key in selectedClient.env) {
       process.env[key] = selectedClient.env[key];
     }
-
     // Start the server with the selected environment variables
     const env = Object.keys(process.env)
       .map((key) => `${key}=${process.env[key]}`)

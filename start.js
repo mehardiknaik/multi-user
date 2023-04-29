@@ -33,7 +33,7 @@ inquirer
     const env = Object.keys(process.env)
       .map((key) => `${key}=${process.env[key]}`)
       .join(" ");
-    const result = spawn("npx", ["vite", process.argv[2]], {
+    spawnSync("npx", ["vite", process.argv[2]], {
       stdio: "inherit",
       shell: true,
       env: { ...process.env, env },

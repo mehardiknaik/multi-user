@@ -8,17 +8,17 @@ config();
 // Define a list of available clients
 const clients = [
   { name: "Default", env: {} },
-  { name: "Client A", env: { VITE_APP_TITLE: "CLIENT A" } },
-  { name: "Client B", env: { VITE_APP_TITLE: "CLIENT B" } },
-  { name: "Client C", env: { VITE_APP_TITLE: "CLIENT C" } },
+  { name: "Client A", env: { VITE_APP_NAME: "CLIENT A" } },
+  { name: "Client B", env: { VITE_APP_NAME: "CLIENT B" } },
+  { name: "Client C", env: { VITE_APP_NAME: "CLIENT C" } },
 ];
-
+clients[0].env;
 inquirer
   .prompt({
     type: "list",
     name: "client",
     message: "Select a client:",
-    choices: clients.map((client) => client.name),
+    choices: clients,
   })
   .then((answers) => {
     // Get the selected client object
@@ -27,9 +27,10 @@ inquirer
     );
 
     // Set the environment variables for the selected client
-    Object.keys(selectedClient.env).forEach((key) => {
+    console.log(process.env)
+    for (let key in selectedClient.env) {
       process.env[key] = selectedClient.env[key];
-    });
+    }
 
     // Start the server with the selected environment variables
     const env = Object.keys(process.env)

@@ -3,7 +3,7 @@ import { config } from "dotenv";
 import inquirer from "inquirer";
 
 // Load environment variables from .env file
-config();
+config({ path: `.env.${process.env.NODE_ENV}` });
 
 // Define a list of available clients
 const clients = [

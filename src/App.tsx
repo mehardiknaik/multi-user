@@ -2,10 +2,12 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import useConsole from "./hooks/useConsole";
 
 const client = import.meta.env.VITE_APP_NAME;
 function App() {
   const [count, setCount] = useState(0);
+  useConsole()
 
   console.log(import.meta.env);
 

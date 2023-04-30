@@ -10,4 +10,7 @@ export default {
     port: 3000,
     host: true,
   },
+  define: {
+    "import.meta.env.BUILD_TIME": new Date(),
+  },
 };

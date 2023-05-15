@@ -1,9 +1,9 @@
 import "./App.css";
-import RoutePages from "./RoutePages";
 import useConsole from "./hooks/useConsole";
 import { useStrapi } from "./providers/StrapiProvider";
+import { Link } from "react-router-dom";
+import RoutePages from "./RoutePages";
 
-const client = import.meta.env.VITE_APP_NAME;
 function App() {
   useConsole();
   const { strapiData, strapiLoading, strapiError } = useStrapi();
@@ -18,10 +18,18 @@ function App() {
       </div>
     );
 
+  console.log(strapiData);
+
   return (
     <>
       <RoutePages />
-      <footer></footer>
+      <footer>
+        {strapiData.routes.map((e: any) => (
+          <Link key={e.id} to={`/${e.to ? e.to : ""}`}>
+            {e.component}
+          </Link>
+        ))}
+      </footer>
     </>
   );
 }

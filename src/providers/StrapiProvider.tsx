@@ -1,10 +1,13 @@
 import axios from "axios";
 import { createContext, useContext, useState, useEffect } from "react";
 import id from "../config/clientID";
+import defaultData from "../config/strapiData";
 
 const StrapiContext = createContext<any>(null);
+
 export const StrapiProvider = ({ children }: any) => {
-  const [strapiData, setStrapiData] = useState(null);
+  
+  const [strapiData, setStrapiData] = useState(defaultData);
   const [strapiLoading, setStrapiLoading] = useState(true);
   const [strapiError, setStrapiError] = useState("");
 
